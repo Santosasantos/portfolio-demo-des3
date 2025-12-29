@@ -1,6 +1,5 @@
 import Link from "next/link"
-import { Facebook, Linkedin, Mail, MapPin, Phone, Github } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
+import { Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react"
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -14,19 +13,7 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ]
 
-export async function Footer() {
-  const supabase = await createClient()
-  const { data: profile } = await supabase.from("profiles").select("*").single()
-
-  const currentYear = new Date().getFullYear()
-  const fullName = profile?.full_name || "Portfolio Owner"
-  const address = profile?.address || "Address not available"
-  const email = profile?.email || "email@example.com"
-  const phone = profile?.phone || "+880 0000 000000"
-  const linkedinUrl = profile?.linkedin_url || "https://linkedin.com"
-  const facebookUrl = profile?.facebook_url || "https://facebook.com"
-  const githubUrl = profile?.github_url
-
+export function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="container mx-auto px-4 py-8">
@@ -36,19 +23,15 @@ export async function Footer() {
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>{address}</span>
+                <span>Chittagong University, Hathazari- 4331, Chittagong, Bangladesh</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href={`mailto:${email}`} className="hover:underline">
-                  {email}
-                </a>
+                <span>20401026@std.cu.ac.bd</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:underline">
-                  {phone}
-                </a>
+                <span>(+88) 1625 144740</span>
               </div>
             </div>
           </div>
@@ -67,45 +50,28 @@ export async function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Connect</h3>
             <div className="flex gap-4">
-              {facebookUrl && (
-                <a
-                  href={facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-light transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-6 w-6" />
-                </a>
-              )}
-              {linkedinUrl && (
-                <a
-                  href={linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-light transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-6 w-6" />
-                </a>
-              )}
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-light transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-6 w-6" />
-                </a>
-              )}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-light transition-colors"
+              >
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary-light transition-colors"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="mt-8 pt-6 border-t border-primary-dark text-center text-sm">
-          <p>© {currentYear} {fullName.toUpperCase()}</p>
+          <p>© 2025 MD AMIR HOSSEN</p>
         </div>
       </div>
     </footer>
