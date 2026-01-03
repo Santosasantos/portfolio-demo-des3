@@ -306,6 +306,7 @@ export default async function Home() {
                 )}
                 
                 {/* Research Portfolio Link */}
+                {/*
                 <div className="flex justify-center pt-6">
                   <Button
                     asChild
@@ -324,7 +325,7 @@ export default async function Home() {
                     </Link>
                   </Button>
                 </div>
-
+                */}
                 {researchExperiences.length > maxItemsToShow && (
                   <div className="flex justify-center pt-4">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary-dark font-semibold">
